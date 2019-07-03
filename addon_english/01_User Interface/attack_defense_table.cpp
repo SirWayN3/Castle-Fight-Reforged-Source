@@ -1,0 +1,17 @@
+
+	"cf_btn_show_hide__show"				"Show Attack Defense Table"
+	"cf_btn_show_hide__hide"				"Hide Attack Defense Table"
+	"CF_COMBAT_ATTACK_SIEGE"				"Siege Attack"
+	"CF_COMBAT_ATTACK_NORMAL"				"Normal Attack"
+	"CF_COMBAT_ATTACK_SPELLS"				"Spell Damage"
+	"CF_COMBAT_ATTACK_MAGIC"				"Magic Attack"
+	"CF_COMBAT_ATTACK_PIERCE"				"Pierce Attack"
+	"CF_COMBAT_ATTACK_HERO"					"Heroic Attack"
+	"CF_COMBAT_ATTACK_CHAOS"				"Chaos Attack"
+
+	"CF_COMBAT_ARMOR_LIGHT"					"Light Armor"
+	"CF_COMBAT_ARMOR_DIVINE"				"Divine Armor"
+	"CF_COMBAT_ARMOR_FORTIFIED"				"Fortified Armor"
+	"CF_COMBAT_ARMOR_UNARMED"				"No Armor"
+	"CF_COMBAT_ARMOR_MEDIUM"				"Medium Armor"
+	"CF_COMBAT_ARMOR_HEAVY"					"Heavy Armor"

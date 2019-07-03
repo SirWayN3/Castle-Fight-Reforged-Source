@@ -1,0 +1,197 @@
+/* General layout
+=================================================================*/
+#LeftPlayers {
+	padding-top: 50px;
+	width: 500px;
+	height: 100%;
+	background-color: gradient( linear, -300% 100%, 100% 100%, from( #003300 ), to( #000000 ) );
+	flow-children: down;
+}
+
+#RightPlayers {
+	padding-top: 50px;
+	width: 500px;
+	height: 100%;
+	background-color: gradient( linear, 300% 100%, 0% 100%, from( #330000 ), to( #000000 ) );
+	horizontal-align: right;
+	flow-children: down;
+}
+
+#PickingScreen {
+	width: 100%;
+	/*height: 1036px;*/
+	height:100%;
+	/*margin-top: 44px;*/
+	margin-top: 5%;
+	background-color: #000000;
+}
+
+#PickList {
+	width: 100%;
+	height: 100%;
+	flow-children: down;
+	visibility: visible;
+}
+
+#PostPickScreen {
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+	flow-children: down;
+}
+
+.ClassContainer{
+	width: 800px;
+	height: 100%;
+	position: 550px 0 0;
+	background-color: #151515;
+	flow-children: down;
+	color: #ffffff;
+	padding: 2% 0 5% 0;
+}
+
+#HeroPreview {
+	width:600px;
+	horizontal-align: center;
+	height:600px;
+}
+
+/* 'Enter game' button
+=================================================================*/
+#EnterGameBtn {
+	horizontal-align: center;
+	margin-top: 20px;
+
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5AA15E ), to( #87d69533 ) );
+	background-image: url("s2r://panorama/images/backgrounds/background_play_button_large_2x_png.vtex");
+	background-size: 320px 120px;
+	height: 55px;
+	width: 420px;
+	padding-top: 6px;
+}
+
+#EnterGameBtn.disabled, #EnterGameBtn.disabled:Hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #9C9C9C ), to( #D1D1D133 ) );
+}
+
+#EnterGameBtn:Hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #6FDE75 ), to( #87d69533 ) );
+}
+
+#EnterGameBtn Label {
+	horizontal-align: center;
+	color: #fff;
+	font-size: 36px;
+}
+
+/* Hero options
+=================================================================*/
+.ClassRoot {
+	width:500px;
+	height:7.5%;
+	horizontal-align: center;
+	margin-bottom: 20px;
+	/*background-color: #fff;*/
+	background-size: 100% 300%;
+	background-position: 0px -60px;
+	
+	opacity-mask: url("file://{images}/custom_game/skew_mask.tga");
+}
+.ClassOption {
+	width:100%;
+	height:100%;
+	background-image: url('file://{images}/loadingscreens/witch_hunter_loading_screen/loadingscreen.tga');
+	flow-children:right;
+	/*saturation: 0.3;*/
+}
+
+.ready:hover {
+	saturation: 1;
+	transform: translateX( 20px );
+}
+.ClassHeroImage {
+	width:height-percentage( 150% );
+	height:100%;
+	margin-left:10%;
+	saturation:1;
+}
+.ClassOption.taken {
+	saturation: 0.0;
+	transform: none;
+	opacity: 0.8;
+}
+.disabled {
+	saturation: 0.0;
+	transform: none;
+	opacity: 0.2;
+}
+.ClassLabel {
+	width:100%;
+	height:100%;
+	color: #ffffff;
+	font-size: 25px;
+	text-align: center;
+	
+}
+
+/* Text elements and timer
+=================================================================*/
+#HeroSelectText {
+	/*width:8*/
+	/*width:1%;*/
+	height:100%;
+	width:800px;
+	horizontal-align: center;
+	margin-top: 5px;
+	font-size: 48px;
+	color: #fff;
+}
+
+#RandomButton{
+	/*background-color: #123456;*/
+	width:height-percentage( 100% );
+	height:100%;
+	flow-children:none;
+	background-image: url("s2r://panorama/images/control_icons/random_dice_psd.vtex");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+}
+#RandomButton:hover{
+	background-color: #123456;
+	saturation: 1.5;
+	transform: rotateX(30deg);
+	transform: rotateY(30deg);
+	transform: rotateZ(30deg);
+
+}
+#PickTextPanel {
+	width:100%;
+	height:8%;
+	margin-left:0%;
+	horizontal-align: left;
+	flow-children: right;
+	margin-bottom:2%;
+}
+
+#PickTimer {
+
+	width: height-percentage( 100%);
+	height: 100%;
+	border: 3px solid #fff;
+	border-radius: 35px;
+	/*margin: 0px 20px 20px 0px;*/
+	margin: 3% 3% 3% 3%;
+}
+
+#TimerTxt {
+	/*width:100%;*/
+	/*width: 60px;*/
+	text-align:center;
+	font-size: 44px;
+	color:#fff;
+	horizontal-align: center;
+	vertical-align: center;
+}

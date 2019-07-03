@@ -1,0 +1,38 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/Modular.js" />
+	</scripts>
+
+	<styles>
+		<include src="file://{resources}/styles/custom_game/picking_screen.css" />
+	</styles>
+
+	<script>
+		//Module definition
+		Modular.DefineThis({
+
+			//Set the player for this avatar
+			SetHero : function( hero ) {
+				<!-- $.Msg("Modular: ",hero) -->
+				
+				$("#Label").text = $.Localize(hero);
+				$("#Hero_Image").heroname = hero;
+			},
+			SetOnActivate : function( hero ) {
+				$("#Hero").SetPanelEvent( "onactivate", function() {
+					<!-- $.Msg("OnActivate"); -->
+					<!-- $.Msg(hero); -->
+					GameEvents.SendCustomGameEventToServer( "hero_selected", { HeroName: hero } );
+					});
+			},
+		});
+
+	</script>
+	<Panel class="ClassRoot">
+
+		<Panel id="Hero" class="ClassOption" onactivate="" >
+			<DOTAHeroImage id="Hero_Image" heroid="" heroname="" heroimagestyle="" class="ClassHeroImage" />
+			<Label id="Label" text="" class="ClassLabel" />
+		</Panel>
+	</Panel>
+</root>

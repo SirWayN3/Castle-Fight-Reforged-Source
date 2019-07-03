@@ -1,0 +1,24 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_ability_buttons.css" />
+  </styles>
+  <script>
+		$.Msg( "Compiled Panorama Scripts cf_ability_container!" );
+
+  </script>
+  <scripts>
+    <include src="s2r://panorama/scripts/cf/cf_ability_container.js" />
+
+    <include src="file://{resources}/scripts/custom_game/Modular.js" />
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Panel class="cf_border_left" />
+    <Panel id="cf_ability_buttons_container" class="" /> <!-- Button Groups -->
+	 
+  </Panel>
+</root>
+
+
+
+
+

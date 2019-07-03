@@ -1,0 +1,20 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_debug.css" />
+  </styles>
+  <script>
+		$.Msg( "Compiled Panorama Scripts cf_debug!" );
+
+  </script>
+  <scripts>
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Label id="cf_DEBUG" text="DEBUG" />
+    
+  </Panel>
+</root>
+
+
+
+
+

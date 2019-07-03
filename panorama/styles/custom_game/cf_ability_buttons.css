@@ -1,0 +1,187 @@
+.Root
+{
+    width: 23%;
+    height: 18%;
+    vertical-align: bottom;
+    horizontal-align: right;
+    flow-children:right;
+    /*background-color: #000000;*/
+    /*margin-bottom: 10%;*/
+    margin-right: 0%;
+
+}
+#cf_ability_buttons_container
+{
+    width:100%;
+    height:100%;
+
+    horizontal-align:left;
+    vertical-align: top;
+    flow-children: right-wrap;
+    background-image:url("s2r://panorama/images/hud/reborn/ability_bg_psd.vtex");
+    background-color: #000000;
+}
+
+.cf_border_left
+{
+    height:100%;
+    width:height-percentage(50%);
+    padding-left:-10%;
+    background-image: url("s2r://panorama/images/hud/reborn/side_flare_tall_psd.vtex");
+    background-size: 100%, 100%;
+
+    vertical-align: top;
+    horizontal-align:left;
+}
+.cf_group_ability_btn
+{
+    width:20%;
+    /*height:60px;*/
+    height:width-percentage(100%);
+    margin-left: 4px;
+    margin-right:4px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.cf_group_ability_btn:hover
+{
+    brightness: 1.6;
+    /*transform: translate(120%, 120%, 100%);*/
+    /*transform-origin: 50% 50%;*/
+    transform: scale3d(1.1,1.1,1);
+}
+.cf_btn_ability
+{
+    
+    width:100%;
+    height:100%;
+}
+
+
+
+.cf_btn_ability_image
+{
+    width: 90%;
+    height: width-percentage(100%);
+    /*visibility: collapse;*/
+    z-index: -1;
+	margin-top: 5%;
+	margin-left: 5%;
+}
+
+.cf_group_goldcost
+{
+    width:50%;
+    height:25%;
+    margin-left:-2%;
+    margin-bottom:-2%;
+    vertical-align: bottom;
+    horizontal-align:left;
+}
+
+.cf_group_manacost
+{
+    width:50%;
+    height:25%;
+    margin-right:-2%;
+    margin-bottom:-2%;
+    vertical-align: bottom;
+    horizontal-align:right;
+
+}
+
+.cf_group_essencecost
+{
+    width:50%;
+    height:25%;
+    margin-right:-2%;
+    margin-bottom:23%;
+    vertical-align: bottom;
+    horizontal-align:right;
+}
+
+#cf_ab_goldcost
+{
+    width:100%;
+    height:100%;
+    color: #FFFF99;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    margin-top:-50%;
+    vertical-align: top;
+    horizontal-align:left;
+}
+
+#cf_ab_goldcost_bg
+{
+    width: 100%;
+    height: 100%;
+
+    vertical-align: bottom;
+    horizontal-align:left;
+
+    background-image: url("s2r://panorama/images/hud/goldamount_bg_png.vtex");
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+}
+
+#cf_ab_manacost
+{
+    width:100%;
+    height:100%;
+    color: #c0e8fb;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    margin-top:-50%;
+    text-align: right;
+    vertical-align: top;
+    horizontal-align:right;
+}
+
+#cf_ab_manacost_bg
+{
+    width: 100%;
+    height: 100%;
+
+    vertical-align: bottom;
+    horizontal-align:left;
+
+    background-image: url("s2r://panorama/images/hud/manaamount_bg_png.vtex");
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+}
+
+#cf_ab_esscost
+{
+    width:100%;
+    height:100%;
+    color: #37AD05;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    text-align: right;
+    margin-top:-50%;
+    vertical-align: top;
+    horizontal-align:right;
+
+}
+
+#cf_ab_esscost_bg
+{
+    /*Missing Icon here.*/
+}
+
+.Hidden
+{
+    visibility: collapse;
+    opacity: 0;
+}
+
+
+
+

@@ -1,0 +1,81 @@
+
+
+
+Attack AI Mechanics:
+
+
+Known Bugs:
+	- Passive Abilites Missing for LUA Creation:
+		-> Cleave Attack -> Also Hits Flying Units
+	
+
+	-> Send an Init to Resource Panel when loading (or at some point else) to have default values set there.
+
+	-> Check Models for Proper Selection Box
+
+BROKEN:
+	
+
+EarthQuake from Naga missing.
+-> Check ModifierThinker here
+
+
+Test Naga Purge
+-> Should Remove Buffs
+
+
+Engine:
+- Counter for Currently Active Units and Buildings on Both Sides
+
+
+Gebäude sollen auch Einheiten blocken, wenn in den Einstellungen gewünscht
+
+
+Onreconnect prüfen
+-> Es wird angezeigt, dass ein Held auszuwählen ist.
+	-> Müsste behoben worden sein, prüfen
+	-> Funktioniert noch nicht wieder
+-> Verhindern, dass das GameEvent nach erfolgreichen Pick zu sehen ist.
+
+Icons for Unit Table:
+	url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex")
+	url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex")
+	url("s2r://panorama/images/hud/reborn/icon_speed_psd.vtex")
+
+
+Container for Unit Table:
+	lower_hud/center_with_stats/center_block/stats_container
+
+item Shop:
+-> ItemQuality: Add Background color to identify these items?
+
+
+
+
+Panorama:
+-> Change Attack Defense Table from GameEvents to NetTables
+	-> Also Accessible for Custom Unit Data Display Then
+		-> Done
+-> Remove Lower Hud completely? How to deal with Items then..
+	-> Copy Unit Display from the Source
+
+-> TopHudBar
+	-> Color Border in Player Colors
+	-> Rescue Strike Charges below Hero Avatar (with Icon)
+
+
+
+Copy Model Codes from Ancient Wars
+
+
+
+cf_ab_cr_bounceattack
+-> Missing
+
+
+
+AI Core anpassen
+-> Add Custom Target Particle if needed when Target is aquired
+	-> Marksmen (only Air Attacks) gets Sniper Assasinate Target Particle
+
+

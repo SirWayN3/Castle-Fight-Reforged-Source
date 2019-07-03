@@ -1,0 +1,50 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/Modular.js" />
+
+		<include src="file://{resources}/scripts/cf/cf_shop_items.js" />
+	</scripts>
+
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_shop.css" />
+  </styles>
+
+	<script>
+		//Module definition
+		Modular.DefineThis({
+
+			//Set the player for this avatar
+			SetItemName : function( itemName ) {
+				$("#cf_item_image").itemname = itemName;
+			},
+
+			SetButtonFunc : function( param ) {
+				$("#cf_item_button").SetPanelEvent( "onactivate", function() { 
+				<!-- cf_shop_itembuy(param)  -->
+					var eventName = "Buy";
+
+					if (GameUI.IsShiftDown() ) {
+						eventName = "ShowBuy";
+					}
+					GameEvents.SendCustomGameEventToServer("cf_item_buyrequest", {
+						itemName : param,
+						playerID : Players.GetLocalPlayer(),
+						eventName : eventName
+					});
+
+				} );
+			},
+
+			SetGoldCost : function( param ) {
+				$("#cf_item_goldcost").text = param;
+			},
+		});
+	</script>
+
+	<Panel class="cf_item_container" >
+      <Panel id="cf_item_button" class="cf_item_button" />
+      <DOTAItemImage id="cf_item_image" itemname="" />
+	  <Panel hittest="false" id="cf_item_goldcost_bg" />
+      <Label id="cf_item_goldcost" />
+    </Panel>
+</root>

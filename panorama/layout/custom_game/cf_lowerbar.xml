@@ -1,0 +1,35 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_lowerbar.css" />
+  </styles>
+  <script>
+		$.Msg( "Compiled Panorama Scripts cf_lowerbar!" );
+
+  </script>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/Modular.js" />
+
+    <include src="file://{resources}/scripts/cf/cf_lowerbar.js" />
+    
+
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Panel class="cf_border_left" />
+    <Panel class="cf_panel_left">
+      <DOTAPortrait id="portraitHUD" class="Portrait" />
+    </Panel>
+    <Panel class="cf_panel_mid">
+
+      <DOTAHealthMana id="health_mana" />
+    </Panel>
+    <Panel class="cf_panel_right">
+
+    </Panel>
+    <Panel class="cf_border_right" />
+  </Panel>
+</root>
+
+
+
+
+

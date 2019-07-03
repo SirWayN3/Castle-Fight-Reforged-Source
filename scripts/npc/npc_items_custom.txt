@@ -1,0 +1,677 @@
+"DOTAAbilities"
+{
+
+	"item_custom_blast_staff"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3000"
+		"AbilityTextureName"			"item_force_staff"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"         		"1"
+		"ItemQuality" 					"common"
+		"ItemType"						"Consumable"		// CF Item Type, used for Shop Sorting
+		"ItemType"						"defensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"360"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"1"
+		"ItemCost"						"150"
+		"Shop"							"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"damage"    	"60"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"1000"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"movespeed"		"1200"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"Damage"
+			{
+				"Target"				"TARGET"
+				"Type"					"DAMAGE_TYPE_MAGICAL"// Later this will be replaced to SPELL DAMAGE
+				"Damage"				"%damage"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_item_blast_staff_data"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"ThinkInterval"			"1"
+				"OnIntervalThink"
+				{
+					"TrackingProjectile"
+					{
+						"Target"
+						{
+							"Center"		"CASTER"
+							"Radius"		"%radius"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_CREEP"
+							"Flags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+							"Random"		"TRUE"
+						}
+						"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"
+						"Dodgeable"			"FALSE"
+						"ProvidesVision"	"FALSE"
+						"Movespeed"			"%movespeed"
+					}
+				}
+			}
+		}
+	}
+	"item_custom_rune_of_repair"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3001"
+		"AbilityTextureName"			"item_headdress"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA "
+		"AbilityCastRange"				"1000"
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"         		"1"
+		"ItemQuality" 					"common"
+		"ItemType"						"defensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"1000"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"0"
+		"ItemCost"						"500"
+		"Shop"							"1"
+		"EnergyCost"					"0"
+		"UseInventory"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1000"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heal"				"5"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"interval"			"1"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_item_runeofrepair_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
+				"IsBuff"			"1"
+				"ThinkInterval"		"%interval"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"HealAmount"		"%heal"
+						"Target"
+						{
+							"Center"		"CASTER"
+							"Radius"		"%radius"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Types"			"DOTA_UNIT_TARGET_BUILDING"
+						}
+					}
+				}
+			}
+		}
+	}
+	"item_custom_scroll_of_stone"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3002"
+		"AbilityTextureName"			"item_tpscroll"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE "
+		"AbilityCastRange"				"99999"
+		"AOERadius" 					"1000"
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"consumable"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"2"
+		"ItemStockTime"					"120"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"2"
+		"ItemStackable" 				"1"
+		"ItemInitialCharges"			"1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
+		}
+		"ItemCost"						"150"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"400"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor"					"8"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana"					"200"
+			}
+		}
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_scroll_of_stone_bonus_armor"
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types"				"DOTA_UNIT_TARGET_CREEP"
+				}
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_scroll_of_stone_bonus_mana"
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types"				"DOTA_UNIT_TARGET_CREEP"
+				}
+			}
+			"Heal"
+			{
+				"HealAmount"			"%heal"
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types"				"DOTA_UNIT_TARGET_CREEP"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_scroll_of_stone_bonus_armor"
+			{
+				"Duration"					"%duration"
+				"Passive" 					"0"
+				"IsHidden" 					"1"
+				"EffectName"				"particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
+				"EffectAttachType"      	"follow_overhead"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor"
+				}
+			}
+			"modifier_scroll_of_stone_bonus_mana"
+			{
+				"Duration"		"1"
+				"Passive" 		"0"
+				"IsHidden" 		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%mana"
+				}
+			}
+		}
+	}
+	"item_custom_scroll_of_speed"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3003"
+		"AbilityTextureName"			"item_tpscroll"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE "
+		"AbilityCastRange"				"99999"
+		"AOERadius" 					"1000"
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"consumable"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"2"
+		"ItemStockTime"					"120"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"2"
+		"ItemStackable" 				"1"
+		"ItemInitialCharges"			"1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_lone_druid/lone_druid_rabid_buff_speed.vpcf"
+		}
+		"ItemCost"						"150"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"50"
+			}
+		}
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_scroll_of_speed_bonus_speed"
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types"				"DOTA_UNIT_TARGET_CREEP"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_scroll_of_speed_bonus_speed"
+			{
+				"Duration"					"%duration"
+				"Passive" 					"0"
+				"IsHidden" 					"1"
+				"EffectName"				"particles/units/heroes/hero_lone_druid/lone_druid_rabid_buff_speed.vpcf"
+				"EffectAttachType"      	"follow_overhead"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%speed"
+				}
+			}
+		}
+	}
+	"item_custom_bass_drums"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3005"
+		"AbilityTextureName"			"item_ancient_janggo"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"0"
+		"ItemStackable" 				"0"
+		"ItemPermanent"         		"1"
+		"ItemQuality" 					"artifact"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"0"
+		"ItemStockTime"					"999999"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"1"
+		"ItemCost"						"650"
+		"Shop"							"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"global_radius"		"30000"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_item_bassdrum_caster"
+			{
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				"IsHidden" 				"1"
+				"Aura"        			"co_mo_item_bassdrum_bonus"
+				"Aura_Radius" 			"%global_radius"
+				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  			"DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster" 	"0"   // Not Apply to Self, default is 1
+			}
+			"co_mo_item_bassdrum_bonus"
+			{
+				"IsHidden"    		"0" //Don't show the aura applier
+				"IsBuff" 			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		"33"
+				}
+			}
+		}
+	}
+	"item_custom_bass_line"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3006"
+		"AbilityTextureName"			"item_solar_crest"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"0"
+		"ItemStackable" 				"0"
+		"ItemPermanent"         		"1"
+		"ItemQuality" 					"artifact"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"0"
+		"ItemStockTime"					"999999"
+		"ItemInitialStockTime"			"360"
+		"ItemStockInitial"				"1"
+		"ItemCost"						"600"
+		"Shop"							"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"global_radius"		"30000"
+			}
+		}
+		"Modifiers"
+		{
+			"co_mo_item_bassline_owner"
+			{
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				"IsHidden" 				"1"
+				"Aura"        			"co_mo_item_bassline_bonus"
+				"Aura_Radius" 			"%global_radius"
+				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  			"DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster" 	"0"   // Not Apply to Self, default is 1
+			}
+			"co_mo_item_bassline_bonus"
+			{
+				"IsHidden"    		"0" //Don't show the aura applier
+				"IsBuff" 			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"15"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"30"
+				}
+			}
+		}
+	}
+	"item_custom_orb_of_lightning"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3007"
+		"AbilityTextureName"			"item_refresher"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
+		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastPoint"				"1"
+		"AbilityCooldown"				"5"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL" // Later this will be replaced to SPELL DAMAGE
+		"AbilityDamage"					"1000"
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"         		"1"
+		"ItemQuality" 					"rare"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"1000"
+		"ItemInitialStockTime"			"600"
+		"ItemStockInitial"				"0"
+		"ItemCost"						"550"
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+			"particle" 		"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+		}
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bridge_count"		"10"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bridge_range"		"500"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"bridge_delay"		"0.25"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bridge_reduction_perc"	"15"
+			}
+		}
+		"OnCreated"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_orb_of_lightning"
+				"EventName"				"OnCreated"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_orb_of_lightning"
+				"EventName" 			"OnSpellStart"
+				"particle_jump" 		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+				"particle"				"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			}
+		}
+	}
+	"item_custom_cheese"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3100"
+		"AbilityTextureName"			"item_cheese"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"1"
+		"ItemStackable" 				"1"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"epic"
+		"ItemType"						"consumable"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"2"
+		"ItemStockTime"					"500"
+		"ItemInitialStockTime"			"1000"
+		"ItemStockInitial"				"0"
+		"ItemCastOnPickup" 				"0" //-> Auto Cast Function
+		"ItemCost"						"1500"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      		"FIELD_INTEGER"
+				"essence_amount"    	"1"
+			}
+		}
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_cheese"
+				"EventName" 			"OnSpellStart"
+				"essence"				"%essence_amount"
+			}
+			"SpendCharge"				{}
+		}
+	}
+	"item_custom_damage_double"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3110"
+		"AbilityTextureName"			"item_refresher_shard"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"1"
+		"ItemStackable" 				"1"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"rare"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"500"
+		"ItemInitialStockTime"			"1000"
+		"ItemStockInitial"				"0"
+		"ItemCastOnPickup" 				"0" //-> Auto Cast Function
+		"ItemCost"						"600"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_damage"
+				"EventName" 			"DamageDouble"
+			}
+			"SpendCharge"				{}
+		}
+	}
+	"item_custom_damage_quad"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3115"
+		"AbilityTextureName"			"item_refresher"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"1"
+		"ItemStackable" 				"1"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"epic"
+		"ItemType"						"offensive"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"500"
+		"ItemInitialStockTime"			"1000"
+		"ItemStockInitial"				"0"
+		"ItemCastOnPickup" 				"0" //-> Auto Cast Function
+		"ItemCost"						"1400"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_damage"
+				"EventName" 			"DamageQuad"
+			}
+			"SpendCharge"				{}
+		}
+	}
+	"item_custom_restoration_stone"
+	{
+		"BaseClass"             		"item_datadriven"
+		"ID" 							"3120"
+		"AbilityTextureName"			"item_ultimate_orb"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"ItemDroppable" 				"0"
+		"ItemPurchasable" 				"1"
+		"ItemSellable"					"0"
+		"ItemShareability"      		"ITEM_NOT_SHAREABLE"
+		"ItemInitialCharges" 			"1"
+		"ItemStackable" 				"1"
+		"ItemPermanent"         		"0"
+		"ItemQuality" 					"artifact"
+		"ItemType"						"consumable"		// CF Item Type, used for Shop Sorting
+		"ItemStockMax"					"1"
+		"ItemStockTime"					"1000"
+		"ItemInitialStockTime"			"1000"
+		"ItemStockInitial"				"0"
+		"ItemCastOnPickup" 				"0" //-> Auto Cast Function
+		"ItemCost"						"2500"
+		"Shop"							"1"
+		"UseInventory"					"1"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items/cf_items_common.lua"
+				"Function"				"cf_item_restorationstone"
+				"mo_name"				"cf_mo_rescuestrike"
+				"charges"				"1"
+			}
+			"SpendCharge"				{}
+		}
+	}
+
+
+}
+

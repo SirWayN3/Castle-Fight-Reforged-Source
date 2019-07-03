@@ -1,0 +1,98 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_ability_buttons.css" />
+  </styles>
+  <scripts>
+    <include src="s2r://panorama/scripts/cf/cf_ability_buttons.js" />
+    <!-- <include src="s2r://panorama/scripts/cf/cf_group_resources.js" /> -->
+    <include src="file://{resources}/scripts/custom_game/Modular.js" />
+  </scripts>
+  <script>
+		//Module definition
+		Modular.DefineThis({
+			SetImage : function( param ) {
+				if ( param != null ) { $("#cf_ab_img").abilityname = param; };
+			},
+			SetHover : function( param ) {
+				$("#cf_ab_button").SetPanelEvent( "onmouseover", function() {
+					$.DispatchEvent("DOTAShowAbilityTooltip",
+						$("#cf_ab_button"),
+						param
+					);
+				} );
+				$("#cf_ab_button").SetPanelEvent( "onmouseout", function() { 
+					$.DispatchEvent("DOTAHideAbilityTooltip");
+				} );
+			},
+
+			SetButtonFunc : function( param ) {
+				$("#cf_ab_button").SetPanelEvent( "onactivate", function() { 
+					GameUI.SelectUnit ( param.builder, false );
+					GameEvents.SendCustomGameEventToServer( "cf_ability_helper_command",
+				    	{
+					    	"builder" : param.builder,
+					    	"player" : Players.GetLocalPlayer(),
+					    	"abilityEnt": param.ability
+				    	} 
+				    );
+
+				} );
+			},
+
+			SetGoldCost : function( param ) {
+				if ( param == 0) {
+					$("#cf_ab_goldcost").AddClass("Hidden");
+					$("#cf_ab_goldcost_bg").AddClass("Hidden");
+				} else {
+					$("#cf_ab_goldcost").text = param;
+					$("#cf_ab_goldcost").RemoveClass("Hidden");
+					$("#cf_ab_goldcost_bg").RemoveClass("Hidden");
+				};
+			},
+			SetManaCost : function( param ) {
+				if ( param == 0) {
+					$("#cf_ab_manacost").AddClass("Hidden");
+					$("#cf_ab_manacost_bg").AddClass("Hidden");
+				} else {
+					$("#cf_ab_manacost").text = param;
+					$("#cf_ab_manacost").RemoveClass("Hidden");
+					$("#cf_ab_manacost_bg").RemoveClass("Hidden");
+				};
+			},
+			SetEssCost : function( param ) {
+				if ( param == 0) {
+					$("#cf_ab_esscost").AddClass("Hidden");
+					$("#cf_ab_esscost_bg").AddClass("Hidden");
+				} else {
+					$("#cf_ab_esscost").text = param;
+					$("#cf_ab_esscost").RemoveClass("Hidden");
+					$("#cf_ab_esscost_bg").RemoveClass("Hidden");
+				};
+			},
+		});
+	</script>
+  <Panel hittest="false" class="cf_group_ability_btn">
+  
+	<Panel class="cf_group_goldcost">
+	  <Panel hittest="false" id="cf_ab_goldcost_bg" class="" />
+	  <Label hittest="false" id="cf_ab_goldcost" class="" text="gold" />
+	</Panel>
+	<Panel class="cf_group_manacost">
+	  <Panel hittest="false" id="cf_ab_manacost_bg" class="" />
+	  <Label hittest="false" id="cf_ab_manacost" class="" text="mana" />
+	</Panel>
+	<Panel class="cf_group_essencecost">
+	  <Panel hittest="false" id="cf_ab_esscost_bg" class="" />
+	  <Label hittest="false" id="cf_ab_esscost" class="" text="ess" />
+	</Panel>
+	<DOTAAbilityImage id="cf_ab_img" class="cf_btn_ability_image" />
+	<Button id="cf_ab_button" class="cf_btn_ability" />
+  
+
+  </Panel>
+</root>
+
+
+
+
+

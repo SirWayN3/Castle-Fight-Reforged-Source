@@ -1,0 +1,34 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_shop.css" />
+  </styles>
+  <script>
+		$.Msg( "Compiled Panorama Scripts cf_shop!" );
+
+  </script>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/Modular.js" />
+
+    <include src="file://{resources}/scripts/cf/cf_shop.js" />
+
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Panel id="cf_shop" class="Hidden" >
+      <Label text="#shop_title" class="title"/>
+      <Panel id="cf_shop_container" >
+        <Panel id="cf_shop_container_offensive" class="cf_shop_container"/>
+        <Panel id="cf_shop_container_defensive" class="cf_shop_container"/>
+        <Panel id="cf_shop_container_consumable" class="cf_shop_container"/>
+        <!-- Entries will be filled with JS here. -->
+      </Panel>
+    </Panel>
+    <Panel id="cf_shop_button_container" class="" onactivate="cf_shop_toggle()">
+      <Label id="cf_shop_button_label" text='#cf_shop_button_label_show' />
+    </Panel>
+  </Panel>
+</root>
+
+
+
+
+

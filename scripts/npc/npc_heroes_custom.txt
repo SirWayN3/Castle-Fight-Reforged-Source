@@ -1,0 +1,831 @@
+"DOTAHeroes"
+{
+
+	"cf_builder_dummy"
+	{
+			"override_hero"				"npc_dota_hero_jakiro"			// Hero to override		
+			"UnitLabel"					"cf_builder_human"
+			"cf_attacktype"				""
+			"cf_defensetype"			""
+			"cf_armorvalue"				"13.37"
+			"Model"						"models/heroes/antimage/antimage.mdl"			// Model.
+			"Enabled"					"1"
+			"Level"						"1"
+			"HeroUnlockOrder"			"1"
+			"Role"						""
+			"Rolelevels"				""
+			"Team"						"Good"
+			"Portrait"					"vgui/hud/heroportraits/portrait_antimage"
+			"ModelScale" 				".1"
+			"HeroGlowColor" 			"120 64 148"
+			"PickSound"					""
+			"HeroSelectSoundEffect"		""
+			"Ability1"		"generic_hidden"
+			"Ability2"		"generic_hidden"
+			"Ability3"		"generic_hidden"
+			"Ability4"		"generic_hidden"
+			"Ability5"		"generic_hidden"
+			"Ability6"		"generic_hidden"
+			"Ability7"		"generic_hidden"
+			"Ability8"		"generic_hidden"
+			"Ability9"		"generic_hidden"
+			"Ability10"		"generic_hidden"
+			"Ability11"		"generic_hidden"
+			"Ability12"		"generic_hidden"
+			"Ability13"		"generic_hidden"
+			"Ability14"		"generic_hidden"
+			"Ability15"		"generic_hidden"
+			"Ability16"		"generic_hidden"
+			"Ability17"		"generic_hidden"
+			"Ability18"		"generic_hidden"
+			"Ability19"		"generic_hidden"
+			"Ability20"		"generic_hidden"
+			"ArmorPhysical"				"0"										// Physical protection.
+			"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+			"AttackDamageMin"			"0"									// Damage range min.
+			"AttackDamageMax"			"0"									// Damage range max.	
+			"AttackRate"				"0"									// Speed of attack.
+			"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+			"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+			"AttackRange"				"0"									// Range within a target can be attacked.
+			"ProjectileModel"			""										// Particle system model for projectile.
+			"ProjectileSpeed"			"0"										// Speed of projectile.
+			"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+			"AttributeBaseStrength"		"0"									// Base strength
+			"AttributeStrengthGain"		"0"									// Strength bonus per level.
+			"AttributeBaseIntelligence"	"0"									// Base intelligence
+			"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+			"AttributeBaseAgility"		"0"									// Base agility
+			"AttributeAgilityGain"		"0"									// Agility bonus per level.
+			"MovementSpeed"				"0"									// Speed.
+			"MovementTurnRate"			"0.5"									// Turning rate.
+			"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+			"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+			"HealthBarOffset"			"140"
+			"VoiceFile" 				""
+			"StatusHealth"				"1337"		// Base health.
+			"StatusHealthRegen"			"200"			// Health regeneration rate.
+			"StatusMana"				"0"		// Base mana.
+			"StatusManaRegen"			"0"		// Mana regeneration rate.
+	} 
+	"npc_dota_hero_kunkka"
+	{
+		"override_hero"				"npc_dota_hero_kunkka"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"1"
+		"cf_builder_ready"			"1"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_01_ab_builder_bu01"
+		"Ability11"		"cf_01_ab_builder_bu02"
+		"Ability12"		"cf_01_ab_builder_bu03"
+		"Ability13"		"cf_01_ab_builder_bu04"
+		"Ability14"		"cf_01_ab_builder_bu05"
+		"Ability15"		"cf_01_ab_builder_bu06"
+		"Ability16"		"cf_01_ab_builder_bu07"
+		"Ability17"		"cf_01_ab_builder_bu08"
+		"Ability18"		"cf_01_ab_builder_bu09"
+		"Ability19"		"cf_01_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_slark"
+	{
+		"override_hero"				"npc_dota_hero_slark"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"2"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_02_ab_builder_bu01"
+		"Ability11"		"cf_02_ab_builder_bu02"
+		"Ability12"		"cf_02_ab_builder_bu03"
+		"Ability13"		"cf_02_ab_builder_bu04"
+		"Ability14"		"cf_02_ab_builder_bu05"
+		"Ability15"		"cf_02_ab_builder_bu06"
+		"Ability16"		"cf_02_ab_builder_bu07"
+		"Ability17"		"cf_02_ab_builder_bu08"
+		"Ability18"		"cf_02_ab_builder_bu09"
+		"Ability19"		"cf_02_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_windrunner"
+	{
+		"override_hero"				"npc_dota_hero_windrunner"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"3"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_03_ab_builder_bu01"
+		"Ability11"		"cf_03_ab_builder_bu02"
+		"Ability12"		"cf_03_ab_builder_bu03"
+		"Ability13"		"cf_03_ab_builder_bu04"
+		"Ability14"		"cf_03_ab_builder_bu05"
+		"Ability15"		"cf_03_ab_builder_bu06"
+		"Ability16"		"cf_03_ab_builder_bu07"
+		"Ability17"		"cf_03_ab_builder_bu08"
+		"Ability18"		"cf_03_ab_builder_bu09"
+		"Ability19"		"cf_03_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_warlock"
+	{
+		"override_hero"				"npc_dota_hero_warlock"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"4"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_04_ab_builder_bu01"
+		"Ability11"		"cf_04_ab_builder_bu02"
+		"Ability12"		"cf_04_ab_builder_bu03"
+		"Ability13"		"cf_04_ab_builder_bu04"
+		"Ability14"		"cf_04_ab_builder_bu05"
+		"Ability15"		"cf_04_ab_builder_bu06"
+		"Ability16"		"cf_04_ab_builder_bu07"
+		"Ability17"		"cf_04_ab_builder_bu08"
+		"Ability18"		"cf_04_ab_builder_bu09"
+		"Ability19"		"cf_04_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_necrolyte"
+	{
+		"override_hero"				"npc_dota_hero_necrolyte"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"5"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_05_ab_builder_bu01"
+		"Ability11"		"cf_05_ab_builder_bu02"
+		"Ability12"		"cf_05_ab_builder_bu03"
+		"Ability13"		"cf_05_ab_builder_bu04"
+		"Ability14"		"cf_05_ab_builder_bu05"
+		"Ability15"		"cf_05_ab_builder_bu06"
+		"Ability16"		"cf_05_ab_builder_bu07"
+		"Ability17"		"cf_05_ab_builder_bu08"
+		"Ability18"		"cf_05_ab_builder_bu09"
+		"Ability19"		"cf_05_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_huskar"
+	{
+		"override_hero"				"npc_dota_hero_huskar"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"6"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_06_ab_builder_bu01"
+		"Ability11"		"cf_06_ab_builder_bu02"
+		"Ability12"		"cf_06_ab_builder_bu03"
+		"Ability13"		"cf_06_ab_builder_bu04"
+		"Ability14"		"cf_06_ab_builder_bu05"
+		"Ability15"		"cf_06_ab_builder_bu06"
+		"Ability16"		"cf_06_ab_builder_bu07"
+		"Ability17"		"cf_06_ab_builder_bu08"
+		"Ability18"		"cf_06_ab_builder_bu09"
+		"Ability19"		"cf_06_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_tusk"
+	{
+		"override_hero"				"npc_dota_hero_tusk"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"7"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_07_ab_builder_bu01"
+		"Ability11"		"cf_07_ab_builder_bu02"
+		"Ability12"		"cf_07_ab_builder_bu03"
+		"Ability13"		"cf_07_ab_builder_bu04"
+		"Ability14"		"cf_07_ab_builder_bu05"
+		"Ability15"		"cf_07_ab_builder_bu06"
+		"Ability16"		"cf_07_ab_builder_bu07"
+		"Ability17"		"cf_07_ab_builder_bu08"
+		"Ability18"		"cf_07_ab_builder_bu09"
+		"Ability19"		"cf_07_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_terrorblade"
+	{
+		"override_hero"				"npc_dota_hero_terrorblade"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"8"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_08_ab_builder_bu01"
+		"Ability11"		"cf_08_ab_builder_bu02"
+		"Ability12"		"cf_08_ab_builder_bu03"
+		"Ability13"		"cf_08_ab_builder_bu04"
+		"Ability14"		"cf_08_ab_builder_bu05"
+		"Ability15"		"cf_08_ab_builder_bu06"
+		"Ability16"		"cf_08_ab_builder_bu07"
+		"Ability17"		"cf_08_ab_builder_bu08"
+		"Ability18"		"cf_08_ab_builder_bu09"
+		"Ability19"		"cf_08_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_wisp"
+	{
+		"override_hero"				"npc_dota_hero_wisp"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"9"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_09_ab_builder_bu01"
+		"Ability11"		"cf_09_ab_builder_bu02"
+		"Ability12"		"cf_09_ab_builder_bu03"
+		"Ability13"		"cf_09_ab_builder_bu04"
+		"Ability14"		"cf_09_ab_builder_bu05"
+		"Ability15"		"cf_09_ab_builder_bu06"
+		"Ability16"		"cf_09_ab_builder_bu07"
+		"Ability17"		"cf_09_ab_builder_bu08"
+		"Ability18"		"cf_09_ab_builder_bu09"
+		"Ability19"		"cf_09_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+	"npc_dota_hero_rattletrap"
+	{
+		"override_hero"				"npc_dota_hero_rattletrap"			// Hero to override		
+		"UnitLabel"					"builder"
+		"cf_builder_id"				"10"
+		"cf_builder_ready"			"2"		// 1 for Ready, 2 for only in Tools Mode
+		"cf_attacktype"				""
+		"cf_defensetype"			""
+		"cf_armorvalue"				"13.37"
+		"RepairAbility"				"cf_00_ab_builder_repair"
+		"ModelScale" 				"0.8"
+		"Enabled"					"1"
+		"Level"						"1"
+		"ModelScale" 				".90"
+		"HeroGlowColor" 			"120 64 148"
+		"Ability1"		"cf_00_ab_builder_blink"
+		"Ability2"		"cf_00_ab_builder_rescuestrike"
+		"Ability3"		"cf_00_ab_builder_repair"
+		"Ability4"		""
+		"Ability5"		""
+		"Ability6"		""
+		"Ability7"		""
+		"Ability8"		""
+		"Ability9"		""
+		"Ability10"		"cf_10_ab_builder_bu01"
+		"Ability11"		"cf_10_ab_builder_bu02"
+		"Ability12"		"cf_10_ab_builder_bu03"
+		"Ability13"		"cf_10_ab_builder_bu04"
+		"Ability14"		"cf_10_ab_builder_bu05"
+		"Ability15"		"cf_10_ab_builder_bu06"
+		"Ability16"		"cf_10_ab_builder_bu07"
+		"Ability17"		"cf_10_ab_builder_bu08"
+		"Ability18"		"cf_10_ab_builder_bu09"
+		"Ability19"		"cf_10_ab_builder_bu10"
+		"Ability20"		"cf_00_ab_builder_treasurechest"
+		"AbilityTalentStart" "21"				// When Talent tree abilties starts
+		"Ability21"		"generic_hidden"
+		"Ability22"		"generic_hidden"
+		"Ability23"		"generic_hidden"
+		"Ability24"		"generic_hidden"
+		"Ability25"		"generic_hidden"
+		"Ability26"		"generic_hidden"
+		"Ability27"		"generic_hidden"
+		"Ability28"		"generic_hidden"
+		"Ability29"		"generic_hidden"
+		"ArmorPhysical"				"0"										// Physical protection.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.	
+		"AttackRate"				"0"									// Speed of attack.
+		"AttackAnimationPoint"		"0"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"									// Range within a target can be acquired.
+		"AttackRange"				"0"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"MovementSpeed"				"300"									// Speed.
+		"MovementSpeed"				"1500"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"140"
+		"ParticleFile"				"particles/units/heroes/hero_antimage.pcf"
+		"GameSoundsFile"			"scripts/game_sounds_heroes/game_sounds_antimage.txt"
+		"VoiceFile" 				"scripts/voscripts/game_sounds_vo_antimage.txt"
+		"StatusHealth"				"1337"		// Base health.
+		"StatusHealthRegen"			"200"		// Health regeneration rate.
+		"StatusMana"				"0"		// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusStartingMana" 		"0" 		// -1 means default to full mana
+	} 
+
+
+}
+

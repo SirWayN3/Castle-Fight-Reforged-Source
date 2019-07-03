@@ -1,0 +1,69 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/Modular.js" />
+
+		<include src="file://{resources}/scripts/cf/cf_topbar_item.js" />
+	</scripts>
+
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_topbar.css" />
+  </styles>
+
+	<script>
+		//Module definition
+		Modular.DefineThis({
+
+			//Set the player for this avatar
+			SetSteamID : function( ID ) {
+				<!-- $("#cf_item_image").itemname = itemName; -->
+				$("#Avatar").steamid = ID;
+				<!-- $.Msg(ID); -->
+			},
+			SetBuilder : function( name ) {
+				$("#Hero").heroname = name;
+				<!-- $("#Label").text = name; -->
+				$("#Hero").SetPanelEvent( "onmouseover", function() {
+					$.DispatchEvent("DOTAShowTextTooltip",
+						$("#Hero"),
+						$.Localize(name)
+					);
+					}
+				);
+				$("#Hero").SetPanelEvent( "onmouseout", function() { 
+					$.DispatchEvent("DOTAHideTextTooltip");
+					}
+				);
+
+			},
+			SetCState : function ( state ) {
+				switch (state) {
+					case DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED:
+						<!-- Fully Connected -->
+
+					case DOTAConnectionState_t.DOTA_CONNECTION_STATE_NOT_YET_CONNECTED:
+						<!-- Also Bot possible -->
+					case DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED:
+						<!-- Disconnected -->
+						<!-- $("#Disconnected").RemoveClass("Hidden"); -->
+
+					case DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED:
+						<!-- Abandoned -->
+
+					case DOTAConnectionState_t.DOTA_CONNECTION_STATE_LOADING:
+						<!-- Loading -->
+
+				}
+			}
+
+		});
+	</script>
+
+	<Panel class="cf_topbar_player" >
+      <Panel id="Player" >
+	      <DOTAAvatarImage id="Avatar" class="Avatar" steamid="" />
+	      <!-- <Panel id="Disconnected" class="Avatar Hidden" /> -->
+	      <!-- <Panel id="Bot_Controlled"  class="Avatar " /> -->
+	  </Panel>
+      <DOTAHeroImage id="Hero" heroname="" onhover=""/>
+    </Panel>
+</root>

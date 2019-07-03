@@ -1,0 +1,4055 @@
+"DOTAAbilities"
+{
+
+	"cf_02_ab_cr02_01"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"viper_poison_attack"
+		"AbilityCooldown"				"0.0"
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+			"particle"		"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+			"particle"		"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"2.0"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"			"-35"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_speed"			"-35"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_suumpmolk_poison"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"	"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+				}
+				"OnOrbFire"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Viper.poisonAttack.Cast"
+						"Target"		"CASTER"
+					}
+				}
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"cf_mo_suumpmolk_poison_debuff"
+						"Target"		"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_Viper.PoisonAttack.Target"
+						"Target"		"TARGET"
+					}
+				}
+			}
+			"cf_mo_suumpmolk_poison_debuff"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"ThinkInterval"	"1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr03_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"luna_moon_glaive"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"range"						"250" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bounces"					"3"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_reduction_percent"	"30"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bounceattack"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bounce_attack"
+						"range"				"%range"
+						"bounces"			"%bounes"
+						"dmg_reduct"		"%damage_reduction_percent"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr04_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"230" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"35"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr05_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"15" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr05_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"centaur_return"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_centaur/centaur_return.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reflect_perc"				"35" // Chance in Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_dragonturtle_return"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"abilities/ab_creeps_common.lua"
+						"Function"		"cf_ab_cr_return"
+						"reflect_perc"	"%reflect_perc"
+						"attack_damage"	"%attack_damage"
+						"target_type"	"Melee"
+					}
+				}	
+			}
+		}
+	}
+	"cf_02_ab_cr05_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"tidehunter_kraken_shell"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_reduct"				"-80" // Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_hard_shell"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduct"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr06_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			" DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"leshrac_pulse_nova"
+		"AbilityManaCost"				"20"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"6"
+		"AbilityCastRange" 				"500"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	    "cf_autocast"					"1"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"7" // Duration in Seconds
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"as_slow"					"-100"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ms_slow"					"-100" 
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"summon_damage"			"400"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"				"abilities/02_naga/cf_ab_naga.lua"
+				"Target"					"TARGET"
+				"Function"					"cf_ab_naga_purge"
+				"duration"					"%duration"
+				"as_slow"					"%as_slow"
+				"ms_slow"					"%ms_slow"
+				"summon_damage"				"%summon_damage"
+			}
+		}
+	}
+	"cf_02_ab_cr06_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			" DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"weaver_the_swarm"
+		"AbilityManaCost"				"70"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"60"
+		"AbilityCastRange" 				"600"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	    "cf_autocast"					"1"
+	    "cf_unitname"					"cf_02_cr_12_lobster"
+	    "cf_unitcount"					"2"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"45" // Percent
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"				"abilities/02_naga/cf_ab_naga.lua"
+				"Function"					"cf_ab_naga_summonlobster"
+				"duration"					"%duration"
+			}
+		}
+	}
+	"cf_02_ab_cr07_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_02_ab_cr08_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_02_ab_cr08_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"15" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr08_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"175" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"25"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr08_04"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"phantom_assassin_blur"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"					"8" // Chance in Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_evade"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr09_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"20" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_02_ab_cr09_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"15" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr09_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"200" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"30"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr09_04"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"phantom_assassin_blur"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"					"15" // Chance in Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_evade"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr09_05"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"disruptor_static_storm"
+		"MaxLevel"					"1"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PHYSICAL"		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_burn"		"1.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_hit"			"25"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_feedback"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"abilities/ab_creeps_common.lua"
+						"Function"		"cf_ab_cr_manaburn_attack"
+						"Target"		"TARGET"
+						"damage_per_burn"	"%damage_per_burn"
+						"mana_per_hit"		"%mana_per_hit"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr10_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"venomancer_poison_nova" 
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+	   	"AB_SplitUnitCount"				"2"
+	   	"AB_SplitUnit"					"cf_02_cr_13_hydra"
+		"Modifiers"
+		{
+			"cf_mo_cr_split"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/02_naga/cf_ab_naga.lua"
+						"Function"			"cf_ab_split"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr10_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"ogre_magi_ignite"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_inner"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_outer"				"250"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_inner_perc"			"150"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_outer_perc"			"100"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_splash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_splash"
+						"damage"			"%attack_damage"
+						"radius_outer"		"%radius_outer"
+						"dmg_outer_perc"	"%dmg_outer_perc"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr10_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"antimage_spell_shield"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spell_reduction"			"70" // Chance in Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_ancient_hydra"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%spell_reduction"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr10_04"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"viper_poison_attack"
+		"AbilityCooldown"				"0.0"
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+			"particle"		"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+			"particle"		"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"2.0"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"			"-30"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_attack_speed"			"-30"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_hydra_poison"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"	"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+				}
+				"OnOrbFire"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Viper.poisonAttack.Cast"
+						"Target"		"CASTER"
+					}
+				}
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"cf_mo_hydra_poison_debuff"
+						"Target"		"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_Viper.PoisonAttack.Target"
+						"Target"		"TARGET"
+					}
+				}
+			}
+			"cf_mo_hydra_poison_debuff"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"ThinkInterval"	"1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr11_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_02_ab_cr11_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"260" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"50"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_02_ab_cr12_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"300" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_02_ab_cr12_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"mars_bulwark"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"50" // chance in percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduct"					"35" // base_attack + this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_blocking"
+			}
+		}
+	}
+	"cf_02_ab_cr13_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"venomancer_poison_nova" 
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+	   	"AB_SplitUnitCount"				"2"
+	   	"AB_SplitUnit"					"cf_02_cr_14_hydra_lesser"
+		"Modifiers"
+		{
+			"cf_mo_cr_split"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/02_naga/cf_ab_naga.lua"
+						"Function"			"cf_ab_split"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr02_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"150" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_01_ab_cr03_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"ogre_magi_ignite"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_inner"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_outer"				"220"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_inner_perc"			"100"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_outer_perc"			"100"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_splash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_splash"
+						"damage"			"%attack_damage"
+						"radius_outer"		"%radius_outer"
+						"dmg_outer_perc"	"%dmg_outer_perc"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr04_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"10" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr04_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"zuus_arc_lightning"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"10" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_dmg"					"150"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"jump_count"				"0" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_chain"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"			"%chance"
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"			"abilities/01_human/cf_ab_chainlightning.lua"
+								"Function"				"cf_ab_gryphon_chain"
+								"Target"				"TARGET"
+								"Damage"				"%bonus_dmg"
+	     						"particle_jump" 		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr05_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"175" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"25"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr05_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"20" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr05_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"omniknight_repel"
+		"AbilityManaCost"				"33"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"7"
+		"AbilityCastRange" 				"300"
+	    "cf_autocast"					"1"
+	    "cf_ai_ab_castondamaged"		"1"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor"						"6" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hp_regen"					"16"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"10" // Duration in Seconds
+			}
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"				"cf_bless_crusader"
+				"Target"					"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_bless_crusader"
+			{
+				"Duration"					"%duration"
+				"IsPurgable"				"1"
+				"IsBuff"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%armor"
+					}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName" 			"particles/units/heroes/hero_legion_commander/legion_commander_press_ribbon.vpcf"
+						"EffectAttachType" 		"follow_origin"
+						"Target" 				"TARGET"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr06_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName" 			"pugna_nether_blast"
+		"AbilityManaCost"				"35"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"12"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_dmg"					"270" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"aoe_radius"				"370"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"pushback_distance"			"1000"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"disabled_duration"			"10"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_chamber"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"ScriptFile"					"abilities/01_human/cf_ab_chamber.lua"
+						"Function"						"cf_ab_chamber"
+						"Target"						"TARGET"
+					}
+				}
+			}
+			"cf_mo_cr_chamber_disabled"
+			{
+				"Passive"					"0"
+				"IsHidden"					"0"
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"OnSpellStart"
+		{
+			"Knockback"
+			{
+				"Target"							"CASTER"
+				"Center"							"TARGET"
+				"Duration"							"1"
+				"Distance"							"%pushback_distance"
+				"Height"							"0"
+				"ShouldStun"						"FALSE"
+			}
+			"FireEffect"
+			{
+				"Target"							"CASTER"
+				"EffectName"						"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+				"EffectAttachType"					"follow_origin"
+				"EffectRadius"						"%aoe_radius"
+				"EffectLifeDurationScale"			"1"
+			}
+			"ApplyModifier"
+			{
+				"Target"							"CASTER"
+				"ModifierName"						"cf_mo_cr_chamber_disabled"
+				"Duration"							"%disabled_duration"
+			}
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"						"TARGET"
+					"Radius"						"%aoe_radius"
+					"Teams"							"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"							"DOTA_UNIT_TARGET_CREEP"
+				}
+				"Type"								"DAMAGE_TYPE_MAGICAL"
+				"Damage"							"%bonus_dmg"
+			}
+		}
+	}
+	"cf_01_ab_cr07_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_blur"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"					"15" // Chance in Percent
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_evade"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr07_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"mars_bulwark"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spell_reduction"			"50" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ranged_reflect"			"50" // Chance in Percent
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ranged_reduction"			"40" // Reduction in Percent
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/01_human/cf_ab_defend.lua"
+				"Function"			"cf_ab_defend_projectile"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_defend"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%spell_reduction"
+				}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/01_human/cf_ab_defend.lua"
+						"Function"			"cf_ab_defend"
+						"damage"			"%attack_damage"
+						"ranged_reflect"	"%ranged_reflect"
+						"ranged_reduction"	"%ranged_reduction"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr08_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"ogre_magi_ignite"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_inner"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius_outer"				"180"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_inner_perc"			"100"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dmg_outer_perc"			"100"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_splash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"0"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_splash"
+						"damage"			"%attack_damage"
+						"radius_outer"		"%radius_outer"
+						"dmg_outer_perc"	"%dmg_outer_perc"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr08_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"20"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_01_ab_cr09_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"100"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"300" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+	"cf_01_ab_cr10_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"sven_great_cleave"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"175" 
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"percent"					"25"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_cleave"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"			"%percent"
+						"CleaveRadius"			"%radius"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr10_02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"sven_storm_bolt"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"20" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"30"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"2" // Duration in Seconds
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_bash"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/ab_creeps_common.lua"
+						"Function"			"cf_ab_cr_bash"
+						"chance"			"%chance"
+						"damage"			"%damage"
+						"duration"			"%duration"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr10_03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"omniknight_repel"
+		"AbilityManaCost"				"33"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"7"
+		"AbilityCastRange" 				"300"
+	    "cf_autocast"					"1"
+	    "cf_ai_ab_castondamaged"		"1"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor"						"9" // Chance in Percent
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hp_regen"					"24"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"11" // Duration in Seconds
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hp"					"100"
+			}
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"				"cf_bless_paladin"
+				"Target"					"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_bless_paladin"
+			{
+				"Duration"					"%duration"
+				"IsPurgable"				"1"
+				"IsBuff"					"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%armor"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_hp"
+					}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName" 			"particles/units/heroes/hero_legion_commander/legion_commander_press_ribbon.vpcf"
+						"EffectAttachType" 		"follow_origin"
+						"Target" 				"TARGET"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr10_04"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"item_ring_of_basilius"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY" // Can only Ressurect Friendly Units
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityManaCost"				"103"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"40"
+		"AbilityCastRange"				"400"
+	    "cf_autocast"					"1"
+	    "cf_ai_ab_castoncorpse"			"1"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+	    "Precache"
+	    {
+			"particle"				"particles/econ/events/ti9/shovel/shovel_baby_roshan_spawn_burst.vpcf"
+	    }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"delay"				"0.8"
+			}
+		}
+		"OnSpellStart"
+		{
+			"DelayedAction"
+			{
+				"Delay"					"%delay"
+				"Action"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"abilities/01_human/cf_ab_ressurect.lua"	
+						"Function"				"cf_ab_ressurect_onspellstart"
+						"particle"				"particles/econ/events/ti9/shovel/shovel_baby_roshan_spawn_burst.vpcf"
+					}
+				}
+			}
+		}
+	}
+	"cf_01_ab_cr10_05"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"item_ring_of_basilius"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA "
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"armor"				"3"
+			}
+		}
+		"Modifiers"
+		{
+		    "cf_mo_cr_aura_paladin"
+		    {
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				"IsHidden" 				"1"
+		        "Aura"        			"cf_mo_cr_aura_paladin_bonus"
+		        "Aura_Radius" 			"%radius"
+		        "Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		        "Aura_Types"  			"DOTA_UNIT_TARGET_CREEP"
+		        "Aura_ApplyToCaster" 	"1"   // Not Apply to Self, default is 1
+		    }
+		    "cf_mo_cr_aura_paladin_bonus"
+		    {
+		        "Passive" 			"1" //Apply as soon as the spell is learned
+		        "IsHidden"    		"0" //Don't show the aura applier
+	         	"IsBuff" 			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor"
+				}
+		    }
+		}
+	}
+	"cf_02_ab_bu01_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"20"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_01_murloc"
+		"cf_unit_count"					"2"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu01_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"130"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_02_bu_11_murloc_camp"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_02_ab_bu02_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"24"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_02_suumpmolk"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu02_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"725"
+		"cf_AbilityManaCost"			"450"
+		"cf_AbilityEssenceCost"			"1"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_02_bu_14_lernaean_fountain"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_02_ab_bu03_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"25"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_03_wingedserpents"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu04_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"27"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_04_nagaguardian"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu04_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"200"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_02_bu_15_royal_spawning_grounds"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_02_ab_bu05_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"30"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_05_dragonturtle"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu06_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"32"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_06_nagasiren"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu07_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"leshrac_split_earth"
+		"AbilityCastRange"				"30000"
+		"AbilityManaCost"				"7"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"1"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_utility"					"1"
+	    "cf_autocast"					"1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_ursa/ursa_earthshock.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"700"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"10"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"aoe"				"250"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"as_slow"			"50"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"ms_slow"			"50"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"dmg_to_ground"		"40"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/02_naga/cf_ab_naga.lua"
+				"Function"				"cf_ab_earthquake"
+				"particle"				"particles/units/heroes/hero_ursa/ursa_earthshock.vpcf"
+				"radius"				"%radius"
+				"duration"				"%duration"
+				"aoe"					"%aoe"
+				"as_slow"				"%as_slow"
+				"ms_slow"				"%ms_slow"
+				"dmg_to_ground"			"%dmg_to_ground"
+			}
+		}
+	}
+	"cf_02_ab_bu08_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"18"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"1"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName" 			"spectre_reality"
+		"AbilityCastRange"				"30000"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_utility"					"1"
+	    "cf_autocast"					"1"
+	    "precache"
+	    {
+	    	"particle"					"particles/units/heroes/hero_treant/treant_overgrowth_vine_core_sparkly.vpcf"
+	    }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/02_naga/cf_ab_naga.lua"
+				"Function"				"cf_takecontrol"
+				"particle"				"particles/units/heroes/hero_treant/treant_overgrowth_vine_core_sparkly.vpcf"
+			}
+		}
+	}
+	"cf_02_ab_bu09_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName" 			"filler_ability"
+		"AbilityCastRange"				"700"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_utility"					"1"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"700"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"hp_bu"				"2.5"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"hp_cr"				"7.5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"interval"			"1"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/02_naga/cf_ab_naga.lua"
+				"Function"		"cf_ab_coral_statue"
+				"hp_bu"			"%hp_bu"
+				"hp_cr"			"%hp_cr"
+				"radius"		"%radius"
+			}
+		}
+	}
+	"cf_02_ab_bu11_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"25"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_07_murloc_warrior"
+		"cf_unit_count"					"2"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu11_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"150"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_02_bu_12_murloc_village"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_02_ab_bu12_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"35"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_08_murloc_champion"
+		"cf_unit_count"					"2"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu12_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"200"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_02_bu_13_murloc_fortress"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_02_ab_bu13_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"45"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_09_murloc_assasin"
+		"cf_unit_count"					"2"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu14_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"60"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_10_hydra_ancient"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_02_ab_bu15_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"37"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_02_cr_11_naga_royal_guard"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu01_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"20"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_01_footman"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu01_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"175"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_01_bu_11_stronghold"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_01_ab_bu02_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"22"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_02_sniper"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu02_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"180"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_01_bu_12_gunnershall"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_01_ab_bu02_up2"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"160"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_01_bu_13_marksmencamp"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_01_ab_bu03_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"25"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_03_mortar"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu04_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"27"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_04_gryphonrider"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu05_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"29"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_05_crusader"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu05_up1"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"245"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"cf_01_bu_14_church"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_01_ab_bu06_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"30"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_06_warlock"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu07_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"7"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_utility"					"1"
+		"cf_autocast"					"1"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCastRange"				"400"
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+			"soundfile"				"sounds/weapons/hero/sven/warcry.vsnd"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      	"FIELD_INTEGER"
+				"attackspeed"  		"66" // attackspeed Bonus in percent
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"-1"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}
+		}
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+				"EffectAttachType"      "follow_origin"
+				"Target"                "CASTER"
+				"EffectRadius"			"%radius"
+			}
+			"FireSound"
+			{
+				"EffectName"			"sounds/weapons/hero/sven/warcry.vsnd"
+				"Target"				"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center"			"CASTER"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types"				"DOTA_UNIT_TARGET_CREEP"
+				}
+				"ModifierName"			"cf_mo_cr_holy_power"
+				"Duration"				"%duration"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_cr_holy_power"
+			{
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				"IsHidden" 				"0"
+				"IsBuff" 		"1"
+				"IsPurgable" 	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attackspeed"
+				}
+			}
+		}
+	}
+	"cf_01_ab_bu08_01"
+	{// Artillery Basic Attack
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"12"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_utility"					"1"
+		"cf_autocast"					"1"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"precache"
+		{
+			"particle"				"particles/cf_human_artillery_impact.vpcf"
+		}
+		"particle_impact"			"particles/cf_human_artillery_impact.vpcf"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      	"FIELD_INTEGER"
+				"damage_min"  		"300"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_max"		"400"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"160" // 320 AOE
+			}
+			"04"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"burnduration"	"5"
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"timetoimpact"	"3"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"					"abilities/01_human/cf_ab_artillery.lua"
+				"Function"						"cf_ab_artillery_OnSpellStart"
+			}
+		}
+	}
+	"cf_01_ab_bu10_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA "
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityTextureName" 			"dark_seer_wall_of_replica"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"global_radius"		"30000"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_bu_heroicshrine_caster"
+			{
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				"IsHidden" 				"1"
+				"Aura"        			"cf_mo_bu_heroicshrine_bonus"
+				"Aura_Radius" 			"%global_radius"
+				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  			"DOTA_UNIT_TARGET_BUILDING"
+				"Aura_ApplyToCaster" "0"   // Not Apply to Self, default is 1
+			}
+			"cf_mo_bu_heroicshrine_bonus"
+			{
+				"IsBuff" 		"1"
+				"Properties"
+				{
+				}
+			}
+		}
+	}
+	"cf_01_ab_bu11_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"29"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_07_defender"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu12_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"31.5"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_08_heavygunner"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu13_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"30.5"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_09_marksman"
+		"cf_unit_count"					"1"
+		"cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+				"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_01_ab_bu14_01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"41.5"
+		"Level"							"0"
+	    "MaxLevel"                      "1"
+	    "cf_ab_spawner"					"1"
+		"cf_unit_name"					"cf_01_cr_10_paladin"
+		"cf_unit_count"					"1"
+	    "cf_autocast"					"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_spawn_units.lua"
+				"Function"				"cf_common_ab_bu_spawn_units_OnSpellStart"
+	     		"EventName" 			"SpawnUnits"
+			}
+		}
+	}
+	"cf_00_common_ab_bu_destroy"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/common/cf_common_ab_bu_destroy"
+				"Function"				"cf_common_ab_bu_destroy"
+				"Target"				"CASTER"
+			}
+		}
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_destroy"
+				"Function"          	"cf_common_ab_bu_destroy_on"
+				"Target" 				"CASTER"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_destroy"
+				"Function"          	"cf_common_ab_bu_destroy_off"
+				"Target" 				"CASTER"
+			}
+		}
+	}
+	"cf_00_common_ab_bu_dummy"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+	}
+	"cf_00_common_ab_bu_toggleautocast"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName" 			"invoker_alacrity"
+		"cf_AbilityGoldCost"			"0"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"cf_mo_bu_autocast"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"cf_mo_bu_autocast"
+			}
+		}
+	}
+	"cf_00_common_ab_bu_upgrade"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"cf_AbilityGoldCost"			"175"
+		"cf_AbilityManaCost"			"0"
+		"cf_AbilityEssenceCost"			"0"
+		"Level"							"0"
+		"MaxLevel"                      "1"
+		"UpgradeTime"					"10"
+		"cf_upgrade_bu_to"				"UNIT_NAME"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"            "abilities/common/cf_common_ab_bu_upgrade"
+				"Function"          	"cf_common_ab_bu_upgrade"
+			}
+		}
+	}
+	"cf_00_ab_common_treasurebox_income"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+		"MaxLevel"                      "1"
+		"Modifiers"
+		{
+			"cf_mo_bu_treasurebox"
+			{
+				"Passive"				"1"
+				"IsHidden"				"0"
+				"OnCreated"
+				{
+					"RunScript"
+			        {
+			            "ScriptFile"        "cf_income.lua"
+			            "Function"          "cf_income_addtreasurebox"
+			        }
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+			        {
+			            "ScriptFile"        "cf_income.lua"
+			            "Function"          "cf_income_subtreasurebox"
+			        }
+				}
+			}
+		}
+	}
+	"cf_02_ab_builder_bu01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"120"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_01_murloc_hut"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"175"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_02_swampwell"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"230"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_03_temple_of_snakes"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu04"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"250"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_04_spawning_grounds"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu05"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"280"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_05_raptile_pool"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu06"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"350"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_06_naga_spring"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu07"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"600"
+		"cf_AbilityGoldCost"			"360"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_07_ancient_pyramide"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu08"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"625"
+		"cf_AbilityGoldCost"			"310"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_08_oracle_of_sirens"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu09"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"480"
+		"cf_AbilityGoldCost"			"250"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_09_coral_statue"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_02_ab_builder_bu10"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"1500"
+		"cf_AbilityGoldCost"			"750"
+		"cf_AbilityEssenceCost"			"1"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_02_bu_10_tidal_guardian"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu01"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"100"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_01_barracks"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu02"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"140"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_02_snipernest"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu03"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"210"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_03_weaponlab"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu04"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"250"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_04_gryphonrock"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu05"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"280"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_05_chapel"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu06"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"0"
+		"cf_AbilityGoldCost"			"300"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_06_hjordhejmen"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu07"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"750"
+		"cf_AbilityGoldCost"			"225"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_07_gjallerhorn"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu08"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"360"
+		"cf_AbilityGoldCost"			"200"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_08_artillery"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu09"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"300"
+		"cf_AbilityGoldCost"			"150"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_09_watchtower"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_01_ab_builder_bu10"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			""
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"1800"
+		"cf_AbilityGoldCost"			"700"
+		"cf_AbilityEssenceCost"			"1"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_01_bu_10_heroicshrine"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"0"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf_00_ab_builder_blink"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastRange"				"1000"
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+		"AbilitySound"					"Hero_Antimage.Blink_out"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/cf_builder_common.lua"
+				"Function"				"cf_builder_common_blink"
+	     		"EventName" 			"OnSpellStart"
+	     		"Target" 				"POINT"
+			}
+		}
+	}
+	"cf_00_ab_builder_repair"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"AbilityTextureName" 			"shredder_return_chakram_2"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastRange"				"100"
+	    "AbilityCastRangeBuffer"  		"500"
+		"cf_autocast"				"1"		// Ability is checked for this Entry. Then AutoCast is enabled.
+		"cf_ai_ab_castondamaged"	"1"		// Ability will Target only damaged Units.
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+		"OnSpellStart" // Also works for Channel Starting
+		{		
+			"RunScript"
+			{
+				"ScriptFile"	"libraries/repair.lua"
+				"Function"		"Repair"
+			}
+		}
+	}
+	"cf_00_ab_builder_rescuestrike"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE "
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastRange"				"1000"
+		"AOERadius"						"1000"
+		"AbilityCooldown"				"1"
+		"AbilityManaCost"				"0"
+		"AbilitySound"					"Hero_Pugna.NetherBlast"
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/cf_builder_common.lua"
+				"Function"				"cf_builder_common_rescuestrike"
+	     		"EventName" 			"OnSpellStart"
+	     		"Target" 				"POINT"
+	     		"particle"				"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+				"mo_name"				"cf_mo_rescuestrike"
+			}
+		}
+		"Modifiers"
+		{
+			"cf_mo_rescuestrike"
+			{
+				"Passive"				"1"
+				"IsHidden" 				"0"
+				"IsBuff"				"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"abilities/cf_builder_common.lua"
+						"Function"				"cf_builder_common_rescuestrike"
+						"EventName"				"OnCreated"
+						"mo_name"				"cf_mo_rescuestrike"
+					}
+				}
+			}
+		}
+	}
+	"cf_00_ab_builder_test1"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/cf_builder_test.lua"
+				"Function"				"cf_builder_common_test1"
+	     		"Target" 				"POINT"
+			}
+		}
+	}
+	"cf_00_ab_builder_test2"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/cf_builder_test.lua"
+				"Function"				"cf_builder_common_test2"
+			}
+		}
+	}
+	"cf_00_ab_builder_test3"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"abilities/cf_builder_test.lua"
+				"Function"				"cf_builder_common_test3"
+	     		"Target" 				"TARGET"
+			}
+		}
+	}
+	"cf_00_ab_builder_treasurechest"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"			"alchemist_goblins_greed"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"cf_AbilityEnergyCost"			"500"
+		"cf_AbilityGoldCost"			"350"
+		"cf_AbilityEssenceCost"			"0"
+		"cf_custombuildpanel"			"1"
+		"BuildTime"						"10"
+		"UnitName"						"cf_00_bu_01_treasurechest"
+		"Building"						"1"
+		"PlayerCanControl"				"1"
+		"Scale"							"1"
+		"AbilityCastRange" 				"250"
+		"AbilityCooldown"				"1"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				" DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN "
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		"AbilityUnitTargetType"      	"DOTA_UNIT_TARGET_BASIC"
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "libraries/builder.lua"
+	            "Function"          "Build"
+	        }
+		}
+	}
+	"cf00_TESTING_SNIPPET"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"0"
+		"AbilityCooldown"				"0"
+		"Level"							"1"
+	    "MaxLevel"                      "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"150" // this percentage * base_attack
+			}
+		}
+		"OnCreated"
+		{
+			"ApplyModifier"
+			{
+				"Target"					"CASTER"
+				"ModifierName"				"cf_mo_criticalstrike"
+			}
+		}
+	}
+
+
+}
+

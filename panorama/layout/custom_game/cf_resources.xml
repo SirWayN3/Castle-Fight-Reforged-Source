@@ -1,0 +1,44 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_resources.css" />
+  </styles>
+  <script>
+    <!-- $.Msg( "Compiled Panorama Scripts cf_resources!" ); -->
+
+  </script>
+  <scripts>
+    <include src="s2r://panorama/scripts/cf/cf_resources.js" />
+  </scripts>
+  <Panel hittest="false" class="Root">
+
+    <Panel id="cf_group_gold" class="cf_group_resources" onmouseover="DOTAShowTextTooltip(#cf_tooltip_gold)" onmouseout="DOTAHideTextTooltip()">
+      <Image id="cf_gold_icon" class="cf_resources_image"/>
+      <Label id="cf_gold" text="cf_gold"/>
+    </Panel>
+
+    <Panel id="cf_group_income" class="cf_group_resources" onmouseover="DOTAShowTextTooltip(#cf_tooltip_income)" onmouseout="DOTAHideTextTooltip()">
+      <Image id="cf_income_icon" class="cf_resources_image"/>
+      <Panel id="cf_income_group">
+        <ProgressBar id="cf_income_bar" class="cf_progressbar" min="0" max="100" value="0" />
+        <Label id="cf_income" text="cf_income"/>
+
+      </Panel>
+    </Panel>
+
+    <Panel id="cf_group_energy" class="cf_group_resources" onmouseover="DOTAShowTextTooltip(#cf_tooltip_energy)" onmouseout="DOTAHideTextTooltip()">
+      <Image id="cf_energy_icon" class="cf_resources_image"/>
+      <Label id="cf_energy" text="cf_energy"/>
+    </Panel>
+    
+    <Panel id="cf_group_essence" class="cf_group_resources" onmouseover="DOTAShowTextTooltip(#cf_tooltip_essence)" onmouseout="DOTAHideTextTooltip()">
+      <Image id="cf_essence_icon" class="cf_resources_image"/>
+      <Label id="cf_essence" text="cf_essence"/>
+    </Panel>
+
+  </Panel>
+</root>
+
+
+
+
+

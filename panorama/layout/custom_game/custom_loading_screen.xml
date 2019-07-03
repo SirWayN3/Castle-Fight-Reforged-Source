@@ -1,0 +1,20 @@
+<root> 
+	<styles>
+		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/cf/cf_custom_loading_screen.js"/>
+	</scripts>
+	<Panel class="AddonLoadingRoot">
+		<Panel id="CustomBg">
+			<!-- <Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/gamemode.png"/> -->  
+		</Panel>
+		<Panel id="TitlePanel"  > 
+			<Label class="AddonTitle" text="#addon_pregame_Descr" />
+			<Label id="AddonMode" class="AddonTitle" text=""  />
+			<Label class="AddonTitle" text="#addon_pregame_Msg1" />
+			<Label id="AddonIsHost" class="AddonTitle" text="TEXT" />
+			<!-- <Label id="AddonTitle" text="#addon_game_name" style=""/> -->
+		</Panel>
+	</Panel>
+</root>

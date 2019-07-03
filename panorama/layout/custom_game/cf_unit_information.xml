@@ -1,0 +1,56 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_unit_information.css" />
+  </styles>
+  <script>
+
+  </script>
+  <scripts> 
+    <include src="s2r://panorama/scripts/cf/cf_selection_unit.js" />
+    
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Panel id="cf_unit_info" class="cf_unit_info">
+      <Panel id="cf_unit_info_header" class="cf_unit_header">
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val0" class="cf_unit_label" />
+      </Panel>
+
+      <Panel id="cf_unit_info_attack" class="cf_unit_header" >
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val1" class="cf_unit_label" />
+        <Label text="Val2" class="cf_unit_label" />
+        <Label text="Val3" class="cf_unit_label" />
+        <!-- <Label text="Val4" class="cf_unit_label" /> -->
+      </Panel>
+
+      <Panel id="cf_unit_info_defense" class="cf_unit_header" >
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val1" class="cf_unit_label" />
+        <Label text="Val2" class="cf_unit_label" />
+        <!-- <Label text="Val3" class="cf_unit_label" /> -->
+        <!-- <Label text="Val4" class="cf_unit_label" /> -->
+      </Panel>
+
+      <Panel id="cf_unit_info_movement" class="cf_unit_header" >
+        <Label text="Val0" class="cf_unit_label" />
+        <Label text="Val1" class="cf_unit_label" />
+        <!-- <Label text="Val2" class="cf_unit_label" /> -->
+      </Panel>
+
+      <!-- <Panel id="cf_unit_info_abilities" class="cf_unit_header" >
+        <Panel id="cf_unit_info_ability_1" class="cf_unit_ability" >
+          <DOTAAbilityImage class="cf_unit_ability_image" />
+        </Panel>
+      </Panel> -->
+    </Panel>
+    
+  </Panel>
+</root>
+
+
+
+
+

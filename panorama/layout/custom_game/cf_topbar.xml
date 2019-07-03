@@ -1,0 +1,35 @@
+<root>
+  <styles>
+        <include src="s2r://panorama/styles/custom_game/cf_topbar.css" />
+  </styles>
+  <script>
+		$.Msg( "Compiled Panorama Scripts cf_topbar!" );
+
+  </script>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/Modular.js" />
+
+    <include src="file://{resources}/scripts/cf/cf_topbar.js" />
+    
+
+  </scripts>
+  <Panel hittest="false" class="Root">
+    <Panel class="cf_topbar">
+     <Panel class="cf_border_left" />
+      <!-- Filled from JS here -->
+     <Panel id="cf_topbar_left" class="cf_topbar_element"/>
+     <Panel id="cf_topbar_middle" class="cf_topbar_element" >
+      <!-- <Panel class="cf_border_right" /> -->
+      <Label id="cf_topbar_clock" />
+      <!-- <Panel class="cf_border_left" /> -->
+     </Panel>
+     <Panel id="cf_topbar_right" class="cf_topbar_element"/>
+     <Panel class="cf_border_right" />
+    </Panel>
+  </Panel>
+</root>
+
+
+
+
+

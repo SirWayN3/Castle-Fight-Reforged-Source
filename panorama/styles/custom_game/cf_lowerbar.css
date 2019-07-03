@@ -1,0 +1,70 @@
+.Root
+{
+    width: 60%;
+    /*width:fit-children;*/
+    /*max-width:60%;*/
+    height: 20%;
+    vertical-align: bottom;
+    horizontal-align: middle;
+    /*margin-bottom: -0.5%;*/
+    margin-bottom: 40%;
+    /*margin-top: 20%;*/
+    /*margin-right: 0%;*/
+
+    background-color: #000000;
+
+    flow-children:right;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}
+.cf_border_left
+{
+    height:100%;
+    width:height-percentage(50%);
+    /*padding-left:10%;*/
+    background-image: url("s2r://panorama/images/hud/reborn/side_flare_tall_psd.vtex");
+    background-size: 100%, 100%;
+    /*transform: scale3d(1,-1,0);*/
+    vertical-align: top;
+    horizontal-align:left;
+}
+.cf_border_right
+{
+    height:100%;
+    width:height-percentage(50%);
+    background-image: url("s2r://panorama/images/hud/reborn/side_flare_tall_psd.vtex");
+    background-size: 100%, 100%;
+    transform: scale3d(-1,1,0);
+    vertical-align: top;
+    horizontal-align:left;
+}
+.Portrait
+{
+    height:100%;
+    width:height-percentage(100%);
+}
+.cf_panel_left
+{
+    height:100%;
+    width:20%;
+    flow-children:none;
+}
+.cf_panel_mid
+{
+    height:100%;
+    width:40%;
+    flow-children:none;
+}
+.cf_panel_right
+{
+    height:100%;
+    width:20%;
+    flow-children:none;
+}
+
+#health_mana
+{
+    width:100%;
+    height:20%;
+}

@@ -1,0 +1,2 @@
+
+var panel = null;

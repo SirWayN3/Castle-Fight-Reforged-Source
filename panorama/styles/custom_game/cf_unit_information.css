@@ -1,0 +1,57 @@
+.Root
+{
+    width: 20%;
+    height: 25%;
+    vertical-align: bottom;
+    horizontal-align: right;
+    background-color: #000000;
+    margin-bottom: 50%;
+    /*padding-bottom: 25px;*/
+    margin-right: 0%;
+
+}
+
+.cf_unit_info
+{
+	width:100%;
+	height:100%;
+    /*background-color: #ff0000;*/
+    flow-children: down;
+}
+
+.cf_unit_header
+{
+	width: 100%;
+	height: 15%;
+	background-color: #0000ff;
+	/*text-align : center;*/
+
+    border: 1px solid #111111FF;
+    flow-children: right;
+}
+.cf_unit_label
+{
+	width: 20%;
+	height: 100%;
+	background-color: #0000ff;
+    border: 1px solid #111111FF;
+}
+.cf_unit_ability
+{
+	width: 40px;
+	height: 40px;
+    /*border: 1px solid #111111FF;*/
+}
+.cf_unit_ability:hover
+{
+	brightness: 1.6;
+}
+.cf_unit_info:hover
+{
+	/*opacity: 0.6;*/
+}
+.Hidden
+{
+    /*visibility: collapse;*/
+    opacity: 0;
+}
